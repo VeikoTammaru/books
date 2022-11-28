@@ -1,0 +1,39 @@
+.head {
+    margin-top: 10px;
+    margin-left: 1px;
+}
+.head span{
+    margin-right: 10px;
+}
+.lines {
+    border: 1px solid green;
+    margin: 10px 1px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+.ArtCode{
+    display: inline-block;    
+    width: 50px;
+    border-right: 1px dotted green  ;
+}
+
+.Spec{
+    display: inline-block;    
+    width: 400px;
+    border-right: 1px dotted green  ;
+}
+.InStock{
+    display: inline-block;    
+    width: 50px;
+    border-right: 1px dotted green  ;
+}
+.Ordered{
+    display: inline-block;    
+    width: 50px;
+    border-right: 1px dotted green  ;
+}
+.Done{
+    display: inline-block;    
+    width: 50px;
+}

@@ -1,0 +1,85 @@
+.lahetused {
+    border:2px solid green;
+}
+.lahetused div{
+    border-bottom: 1px dotted green ;
+}
+
+.lahetused label{
+    display:inline-block;
+    width: 100px;
+    
+}
+.picerBox{
+    display: inline-block;
+}
+.rida{
+    border:1px dotted green;
+    background-color: rgba(185, 238, 238, 0.5);
+}
+.openCloseRowsImage{
+    position: relative; 
+    float: right;
+    margin-bottom: -40px;
+    top: -40px;
+    width: 40px;
+    height: 40px;
+}
+.goToEdit{
+     position: relative;  
+    float: right;
+    margin-bottom: -40px;
+    margin-right:  55px;
+    right: -10px;
+    top: -40px;
+
+}
+.buttonImg, 
+.goToEdit img{
+    width: 40px;
+    height: 40px;
+}
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+.buttonImgRotate{
+    
+    animation: rotation 2s infinite linear;
+    width: 50px;
+    height: 50px;
+}
+ 
+.ArtCode{
+    color:green;
+    display:inline-block;
+    width: 50px;
+}
+.Ordered{
+    
+    color:blue;
+    display:inline-block;
+    width: 50px;
+
+}
+.InStock{
+    color:grey;
+    display:inline-block;
+    width: 50px;
+
+}
+.Spec{
+    color:purple;
+    display:inline-block;
+    padding-right: 10px;
+    width: 200px;
+    max-width: 200px;
+    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
