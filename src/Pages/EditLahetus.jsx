@@ -20,15 +20,19 @@ function EditLahetus() {
     if(fetchControl.isErr) setTimeout(()=>setFetchControl(fetchControlDefault), config.errorDuration);
     
     const fechLahetus = () =>{
-        const booksUrl = '/SHVc.php?SerNr='+LahetusSerNr+'&r='+Math.random();
+       const booksUrl = '/SHVc.php?SerNr='+LahetusSerNr+'&r='+Math.random();
         setFetchControl({...fetchControlDefault, "isRet":true, "booksUrl":booksUrl, "date": Date.now()});
+        console.log ("fechLahetus config.booksUrl + booksUrl", config.booksUrl + booksUrl);
         fetch (config.booksUrl + booksUrl)
             .then(response => response.json())
             .then (res =>{
+                
                 if (res.SHVc) {
                     setFetchControl({...fetchControlDefault});
                     let data = res.SHVc;
                     setList(RepearSHVc(data)[0]);
+                    sessionStorage.setItem("lahetus", JSON.stringify(RepearSHVc(data)[0]));
+                    console.log ("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
                 } else {
                     console.log("res", res);
                     if (res.Error){
@@ -40,39 +44,25 @@ function EditLahetus() {
                 }
            })
            .catch (err=>{
-                    console.log(err);
+                    console.log("catch", err);
                     setFetchControl({...fetchControlDefault,  "isErr": true, "errMes":"catch: " + err });
                     setList([]); 
            });
     }
-    const saveToSS = () =>{
-        sessionStorage.setItem("lahetus", JSON.stringify(list));
-        //TODO - lisa timestamp 
-    }
 
-    const makeListObjekt = () =>{
-        
-        const existingObj= JSON.parse(sessionStorage.getItem ("lahetus"));
-        console.log("makeListObjekt",existingObj);
-        if (!existingObj) {
-            fechLahetus();
-            if (list===[]){
-                setDebug("Lähetuste toomine ebaõnnestus");
-                setTimeout (()=>navigate ("/lahetused"),config.errorDuration);
-            }
-        }
-        setList(existingObj);
-
-            // doto kontrolli timestamp
-            // doto kontrolli andmed
-        
-    }
-    
+ 
     useEffect(() => {
+        const existingObj= JSON.parse(sessionStorage.getItem ("lahetus"))||"tyhi";
         
-        makeListObjekt();
+        console.log("existingObj", (existingObj && existingObj!=="tyhi") , existingObj!=="tyhi", existingObj);
+        if (existingObj && existingObj!=="tyhi") {
 
-    }, [LahetusSerNr]);
+            setList(existingObj);
+        } else {
+            fechLahetus();
+        };
+
+    }, []);
     
     const editLine = ix =>{ // GOTO - ühe toote täitmisele
         const lineToEdit ={"line":list.line[ix], "SerNr":list.SerNr, "lineNo": ix }
@@ -86,10 +76,9 @@ function EditLahetus() {
             <br /> TODO: Valimis funktsioon
             <br /> - salvesta booksi
             <br /> - salvesta staatus 'Lõppenud' - DB backend puudu :-(
+            <br /> - saveToSS();
             </>
         );
-       // setTimeout (()=>navigate ("/lahetused"),config.errorDuration);
-       saveToSS();
     }
 
     const LahetusCancel = () => { // GoTO hoiatus + lähetuste nimekiri
@@ -100,11 +89,14 @@ function EditLahetus() {
             <br />- kui on siis hoiatus lahkumiseks
             </>
         );
-        setTimeout (()=>navigate ("/lahetused"),config.errorDuration);
     }
 
-    console.log(list);
-    console.log(debug);
+    const LahetusBack = ()=>{
+        navigate ("/lahetused");
+    }
+
+    console.log("list",list);
+    console.log("debug",debug);
     return (
         <>
         {fetchControl.isRet && 
@@ -116,18 +108,17 @@ function EditLahetus() {
         }
 
         {fetchControl.isErr && <Alert variant="danger">{fetchControl.errMes}</Alert>}
-        
-        {debug!=="" && <Alert>
+          {(debug!=="") && <Alert>
             <img src="/img/to-do.png" className={style.buttonImg} alt="TODO"/>
                 {debug}
         </Alert>}
-
+  
         {list.length === 0 ?
             <>
                 {!fetchControl.isRet && 
                 <>
                 <button onClick={fechLahetus}>fechLahetus</button>
-                <button onClick={makeListObjekt}>makeListObjekt</button>
+                
                 </>
                 }
             </>  
@@ -150,6 +141,7 @@ function EditLahetus() {
                 )} 
                 <Button onClick = {LahetusDone}>Sisesta</Button>
                 <Button onClick = {LahetusCancel}>Tühista</Button>
+                <Button variant="warning" onClick = {LahetusBack}>Tagasi</Button>
             </>
         }
         </>

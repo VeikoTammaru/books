@@ -14,8 +14,15 @@ function EditLahetusLine () {
     const [isScales, setIsScales] = useState(true);
     const sumRef = useRef();
     
-    console.log(weigthing);
     const cleanAndUp = () => {
+        const olol = JSON.parse (sessionStorage.getItem("lahetus"));
+        olol.line[lineNr].Done=weigthingSum();
+        console.log ("olol.line[lineNr].Done", olol.line[lineNr].Done);
+        console.log ("olol.", olol);
+        sessionStorage.setItem ("lahetus", JSON.stringify(olol));
+
+
+
         sessionStorage.removeItem("lineToEdit");
         navigate (`/lahetused/${LahetusSerNr}`);
     }
@@ -26,6 +33,15 @@ function EditLahetusLine () {
             navigate (`/lahetused/${LahetusSerNr}`);
         }
     }, []);
+    useEffect(() => {
+        sumRef.current.value = weigthingSum();
+    }, [weigthing]);
+
+    const weigthingSum = ()=>{
+        let WSum = 0;
+        weigthing.map(s=> WSum += Number(s));
+        return WSum;
+    }
 
     if (Object.keys(lineToEdit).length === 0 || !(lineToEdit.line["@attributes"].rownumber === lineNr &&String(lineToEdit.lineNo) ===lineNr)){
         setTimeout( () => cleanAndUp(), 15000);

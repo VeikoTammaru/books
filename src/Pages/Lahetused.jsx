@@ -14,16 +14,18 @@ function Lahetused() {
     
     const [list, setList] = useState([]);
     const OKFlagIsFalseRef = useRef();
-    const [startDate, setStartDate] =  useState(new Date(JSON.parse (sessionStorage.getItem("startDate")))||null);
-    const [endDate, setEndDate] =  useState(new Date(JSON.parse (sessionStorage.getItem("endDate")))||null);
+    const [startDate, setStartDate] =  useState(new Date());
+    const [endDate, setEndDate] =  useState(new Date());
     const [debug, setDebug]= useState("");
-
+    console.log(new Date(), startDate);
     /* fetchControl */
     const fetchControlDefault ={"isErr": false, "errMes":"", "isRet":false, "date": Date.now() - config.booksTime-10};
     const [fetchControl, setFetchControl]=useState (fetchControlDefault);
     if(fetchControl.isErr) setTimeout(()=>setFetchControl(fetchControlDefault), config.errorDuration);
     
     useEffect(() => {
+        const startDateSS = JSON.parse (sessionStorage.getItem("startDate"));         if (startDateSS) setStartDate(new Date(startDateSS));
+        const endDateSS   = JSON.parse (sessionStorage.getItem("endDate"  ));         if (endDateSS)   setEndDate(new Date(endDateSS));
         OKFlagIsFalseRef.current.checked= JSON.parse (sessionStorage.getItem("startDate"))||false;
     },[]);
 
