@@ -10,3 +10,12 @@
     width: 75px;
     margin:10px
 }
+.buttonChar button{
+    font-size:2em;
+}
+.scalesInput{
+    align-self: center;
+    border: 2px solid black;
+    margin: 10px;
+
+}

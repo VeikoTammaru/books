@@ -83,7 +83,7 @@ function HomePage() {
                     </AccordionBody>
                 </Accordion.Item>
                 <AccordionItem eventKey="2">
-                    <AccordionHeader >Eesmärgid</AccordionHeader>
+                    <AccordionHeader >Tegevused</AccordionHeader>
                     <AccordionBody>
                     <ListGroup>
                         <ListGroupItem>
@@ -131,54 +131,29 @@ function HomePage() {
                             </ListGroup>
                             <ListGroup>
                                 <ListGroupItem variant="info"><h5>Klaviatuur</h5></ListGroupItem>
-                                <ListGroupItem variant="warning">Klaviatuuri vaade</ListGroupItem>
-                                <ListGroupItem variant="warning"></ListGroupItem>
-                                <ListGroupItem variant="warning"></ListGroupItem>
-                                <ListGroupItem variant="warning"></ListGroupItem>
+                                <ListGroupItem variant="success">Klaviatuuri vaade</ListGroupItem>
+                                <ListGroupItem variant="success">nupud 0-9, Backspace, enter</ListGroupItem>
+                                <ListGroupItem variant="success">lisame logisse</ListGroupItem>
                             </ListGroup>
                             <ListGroup>
                                 <ListGroupItem variant="info"><h5>Kaalumiste sisestuste liidetisaken</h5>Kasutatav nii kaalumise kui ka käsitsi siestamise korral nähtav ka  </ListGroupItem>
-                                <ListGroupItem variant="warning">Vaade: kaalumiste logi</ListGroupItem>
-                                <ListGroupItem variant="warning">vaade peab olema vaadeldav, ühe rea, kaalumise , klaviatuuri vaatega samaaegselt</ListGroupItem>
+                                <ListGroupItem variant="success">Vaade: kaalumiste logi</ListGroupItem>
+                                <ListGroupItem variant="success">vaade peab olema vaadeldav, Lähetuse rea(parent), kaalumise , klaviatuuri vaatega samaaegselt</ListGroupItem>
                                 <ListGroupItem variant="warning">nupp: logist ühe elemendi kustutamine</ListGroupItem>
+                                <ListGroupItem variant="warning">nupp: logist ühe elemendi etiketi printimine</ListGroupItem>
                                 <ListGroupItem variant="warning">logi on elus kuni lähetuse vaatesse liikumiseni ...? nimekirja..?</ListGroupItem>
                                 <ListGroupItem variant="warning"></ListGroupItem>
+                            </ListGroup>
+                            <ListGroup>
+                                <ListGroupItem variant="info" ><h5>Eriketi pritimine</h5></ListGroupItem>
+                                <ListGroupItem variant="Waning">Kujundus: ...eraldi leht,  ...@media</ListGroupItem>
+                                <ListGroupItem variant="Waning">(kaalu)triipkood</ListGroupItem>
                             </ListGroup>
                         </ListGroupItem>
                     </ListGroup>
                     </AccordionBody>
                 </AccordionItem>
             </Accordion>
-            
-
-    
-            <p>Eesmärgid:</p>
-            <ul>
-                <li>Lugeda sisse "tänased" lähetused
-                    <ul>
-                        <li className="red">
-                            paraleel terminali haldus
-                        </li>
-                    </ul>
-                </li>
-
-                <li>valida lähetus ja lugeda sisse</li>
-                <li>valida rida ja mine kaaluma -&gt; loop kõik kaalutud</li>
-                <li>Kaalumine
-                    <ul>
-                        <li>"pidev" kaalu lugemine</li>
-                        <li>muud toimingu nupud:
-                            <ul>
-                                <li>nulli</li>
-                                <li>taara</li>
-                                <li>kaalu</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>Kirjuta lähetus tagasi</li>
-
-            </ul>
             
         </>
     );

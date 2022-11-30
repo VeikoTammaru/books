@@ -2,6 +2,7 @@
 import { useRef } from "react";
 import { Button } from "react-bootstrap";
 import style from "../css/Keyboard.module.css"
+
 function Keyboard({WeigthingPR}) {
     const displayRef = useRef();
 
@@ -10,7 +11,6 @@ function Keyboard({WeigthingPR}) {
             arr.push(displayRef.current.value);
             displayRef.current.value ="";
             return arr.slice();
-
         })
     }
 
@@ -26,18 +26,12 @@ function Keyboard({WeigthingPR}) {
             default :
                 displayRef.current.value += key;
         }
-       
-       
-       
-
-       
     }
     return (  
-        
         <span className={style.keyboardBox}>
-        <input ref={displayRef}/>
-        
-        <Button onClick={()=>pressKey("B")}>B</Button>
+        <input ref={displayRef} readOnly/>
+        <span className={style.buttonChar}>
+        <Button onClick={()=>pressKey("B")}>&larr;</Button>
         <Button onClick={()=>pressKey("7")}>7</Button>
         <Button onClick={()=>pressKey("8")}>8</Button>
         <Button onClick={()=>pressKey("9")}>9</Button>
@@ -49,8 +43,8 @@ function Keyboard({WeigthingPR}) {
         <Button onClick={()=>pressKey("3")}>3</Button>
         <Button onClick={()=>pressKey("0")}>0</Button>
         <Button onClick={()=>pressKey(".")}>.</Button>
-        <Button onClick={()=>pressKey("E")}>E</Button>
-        
+        <Button onClick={()=>pressKey("E")}>&#8626;</Button>
+        </span>
         </span>
         
     );

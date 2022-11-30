@@ -9,13 +9,23 @@ import { BrowserRouter } from 'react-router-dom';
 Date.prototype.ddmmyyyy = function() {
   var mm = this.getMonth() + 1; // getMonth() is zero-based
   var dd = this.getDate();
-
   return [
           (dd>9 ? '' : '0') + dd,
           ".", 
           (mm>9 ? '' : '0') + mm,
           ".",
           this.getFullYear()
+         ].join('');
+};
+Date.prototype.yyyymmdd = function() {
+  var mm = this.getMonth() + 1; // getMonth() is zero-based
+  var dd = this.getDate();
+  return [
+            this.getFullYear()      
+          , "-" 
+          , (mm>9 ? '' : '0') + mm
+          , "-"
+          , (dd>9 ? '' : '0') + dd
          ].join('');
 };
 

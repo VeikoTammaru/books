@@ -1,4 +1,10 @@
 {
-      "booksUrl":"http://localhost/booskApi/api/",
-      "kaalUrl":"http://localhost/booksApi/kaal/"
+        "booksUrl":"http://localhost/booskApi/api"
+      , "booksTime":60001
+      , "scalesUrl":"http://localhost/booskApi/kaal/"
+
+      , "lahetusSycle" :3600000
+      
+      , "errorDuration":15000
+      
 }

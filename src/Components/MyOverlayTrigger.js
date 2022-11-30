@@ -1,26 +1,23 @@
-import { Button, Image, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 
-function MyOverlayTrigger({myStyle, myImgSrc, myTooltip, myClick}) {
-  return (
-    <OverlayTrigger 
-    placement="bottom"
-    overlay={<Tooltip >{myTooltip}</Tooltip>}
->
-{({ ref, ...triggerHandler }) => (
-    <Button
-        variant="light"
-        {...triggerHandler}
-        onClick = {myClick}
+function MyOverlayTrigger({myTooltip, myClick, myElement}) {
+    return (
+        <OverlayTrigger 
+            placement="bottom"
+            overlay={<Tooltip >{myTooltip}</Tooltip>}
         >
-        <Image
-            ref={ref}
-            roundedCircle
-            src={myImgSrc}
-            className={myStyle}
-        />
-    </Button>
-)}
-</OverlayTrigger>  );
+        {({ ref, ...triggerHandler }) => (
+            <Button
+                ref={ref}
+                variant="light"
+                {...triggerHandler}
+                onClick = {myClick}
+                >
+                {myElement}
+            </Button>
+        )}
+        </OverlayTrigger>  
+);
 }
 
 export default MyOverlayTrigger;
