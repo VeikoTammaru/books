@@ -18,6 +18,7 @@ function Lahetused() {
     const [endDate, setEndDate] =  useState(new Date());
     const [debug, setDebug]= useState("");
     console.log(new Date(), startDate);
+    
     /* fetchControl */
     const fetchControlDefault ={"isErr": false, "errMes":"", "isRet":false, "date": Date.now() - config.booksTime-10};
     const [fetchControl, setFetchControl]=useState (fetchControlDefault);
