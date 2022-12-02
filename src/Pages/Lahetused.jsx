@@ -17,7 +17,6 @@ function Lahetused() {
     const [startDate, setStartDate] =  useState(new Date());
     const [endDate, setEndDate] =  useState(new Date());
     const [debug, setDebug]= useState("");
-    console.log(new Date(), startDate);
     
     /* fetchControl */
     const fetchControlDefault ={"isErr": false, "errMes":"", "isRet":false, "date": Date.now() - config.booksTime-10};
@@ -34,7 +33,6 @@ function Lahetused() {
         sessionStorage.setItem("startDate",JSON.stringify(startDate));
         sessionStorage.setItem("endDate",JSON.stringify(endDate));
         sessionStorage.setItem("OKFlagIsFalseRef",JSON.stringify(OKFlagIsFalseRef.current.checked));
-        console.log("Kirjutab");
     }, [startDate, endDate]);
 
 
@@ -66,11 +64,9 @@ function Lahetused() {
             .then (res =>{
                 const data = res.SHVc;
                 if(data){
-                    console.log("data", data);
-                    setList(RepearSHVc(data)); //TODO setFetchControl -> error kui on vigane data
+                    setList(RepearSHVc(data)); 
                     setFetchControl({ "isErr": false, "errMes":"", "isRet":false, "date": Date.now() - config.booksTime-1})    
                 } else {
-                    console.log("res", res);
                     if (res.Error){
                         setFetchControl({ "isErr": true, "errMes":res.Error, "isRet":false, "date": Date.now() - config.booksTime-1})
                     } else {
@@ -80,10 +76,9 @@ function Lahetused() {
                 }
             })
             .catch (err=>{
-                console.log(err);
                 setFetchControl({
                     "isErr": true,
-                    "errMes":"catch: " + err  , //TODO: err mingi mess välja tuua
+                    "errMes":"catch: " + err  , 
                     "isRet":false, 
                     "date": Date.now()
                 });
@@ -109,8 +104,6 @@ function Lahetused() {
             <h1>Lähetuste nimekiri</h1>
             <div>
                 <MyOverlayTrigger 
-                    //myStyle={reloadClass} 
-                    //myImgSrc ="/img/refresh.png" 
                     myTooltip="Värskenda lähetuste nimekirja!"
                     myClick = {fechBooks}
                     myElement ={<Image

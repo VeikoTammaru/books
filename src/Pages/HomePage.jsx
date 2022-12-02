@@ -34,10 +34,25 @@ function HomePage() {
                             <li>vajadusel jätkab pooleliolevaid tellimusi</li>
                             <li>suunab tellimused tagasi klienditeeninajale</li>
                         </ul>
+                        <h5>Lao töötaja töökomplekt</h5>
+                        <ul>
+                            <li>puutetundlik ekraan (seinale kinnitatud, kaasaskantav tahvel) nb! ilma klaviatuuri/hiireta</li>
+                            <li>kaalud 
+                                <ul>
+                                    <li>fix punktd</li>
+                                    <li>kõik terminalid peavad saama kasutada kõiki kaale risti rästi</li>
+                                </ul>
+                            </li>
+                            <li>printerid (erinevad riistvarad kuna erinevad paberid, suurused,... jne)
+                                <ul>
+                                    <li>eriketi printer - Kauba etikettimiseks</li>
+                                    <li>etiketi printer - pakendi varustamiseks kaubasedelitega</li>
+                                </ul>
+                            </li>
+                        </ul>
                     </AccordionBody>
                 </Accordion.Item>                    
                 <Accordion.Item eventKey="1">
-
                     <AccordionHeader>Eeldused - välisühendused</AccordionHeader>
                     <AccordionBody>
                         <ListGroup>
@@ -53,9 +68,11 @@ function HomePage() {
                         </ListGroupItem>
                         <ListGroupItem>
                             <ListGroup>
-                                <ListGroupItem variant="info"><h5>Kaal</h5>radwag PUE 7.1</ListGroupItem>
-                                <ListGroupItem variant="success">Backend PHP -&gt; class kaalSocket - By Tauri Tammaru</ListGroupItem>
-                                <ListGroupItem variant="warning">Backend PHP API -&gt; hetkel tagastab ainult kaalu. vaja lisada muu funktsionaalsus</ListGroupItem>
+                                <ListGroupItem variant="info"><h5>Kaal -&gt; PHP</h5>radwag PUE 7.1</ListGroupItem>
+                                <ListGroupItem variant="success">class kaalSocket - Tauri Tammaru</ListGroupItem>
+                                <ListGroupItem variant="success">Hetkel tagastab ainult kaalu.</ListGroupItem>
+                                <ListGroupItem variant="warning">Taara, Nullimine</ListGroupItem>
+                                <ListGroupItem variant="warning">Offline</ListGroupItem>
                             </ListGroup>
                         </ListGroupItem>
                         <ListGroupItem>
@@ -91,43 +108,59 @@ function HomePage() {
                                 <ListGroupItem variant="info"><h5>Lähetuste nimekiri</h5></ListGroupItem>
                                 <ListGroupItem variant="success">Kuvab nimekirja kus on read võimalik avadaja sulgeda</ListGroupItem>
                                 <ListGroupItem variant="success">Võimalik minna ühte töötlema</ListGroupItem>
-                                <ListGroupItem variant= "warning" >Lisada filtrid 
+                                <ListGroupItem variant= "success" >Filtrid 
                                     <ul>
                                         <li>kuupäevad</li>
                                         <li>on kinnitatud</li>
+                                    </ul>
+                                </ListGroupItem>
+                                <ListGroupItem variant="warning">
+                                    Lisada filtrid
+                                    <ul>
                                         <li>Staatus</li>
                                         <li>Nimi</li>
                                     </ul>
                                 </ListGroupItem>
                                 <ListGroupItem variant= "warning"> Sorteenimine
                                     <ul>
-                                        <li>Algsorteering - raskemad enne</li>
+                                        <li>Algsorteering - default: raskemad enne</li>
                                         <li>Nimi</li>
                                     </ul>
                                     </ListGroupItem>
-                                    <ListGroupItem></ListGroupItem>
                             </ListGroup>
                             <ListGroup>
                                 <ListGroupItem variant="info"><h5>Lähetus</h5></ListGroupItem>
-                                <ListGroupItem variant="success">Ühe lähetuse vaade</ListGroupItem>
+                                <ListGroupItem variant="success">Lähetuste vaade</ListGroupItem>
+                                <ListGroupItem variant="warning">Lähetuste vaade - korrektne vastus aga tühi</ListGroupItem>
                                 <ListGroupItem variant="success">Liikumine ühe rea vaatesse</ListGroupItem>
-                                <ListGroupItem variant="warning">read värvida vastavalt staatusele. komplekteerimata, komplekteeritud, poolik, </ListGroupItem>
+                                <ListGroupItem variant="warning">read värvida vastavalt staatusele (backend BD + Books OkFlag). komplekteerimata, komplekteeritud, poolik, </ListGroupItem>
+                                <ListGroupItem variant="warning">Pakendite transpordi etiketid
+                                <ul>
+                                    <li>salvestamine eraldi +,-,õ pakendite kogus</li>
+                                    <li>pakendi etiketide trükkimine. peab olema võimalus lisada andmerid: (+&#8451;/-&#8451;/õrn/...) (mitu) / (mitmest)</li>
+                                </ul>
+                                </ListGroupItem>
                             </ListGroup>
                             <ListGroup>
                                 <ListGroupItem variant="info"><h5>Lähetuse rida</h5></ListGroupItem>
-                                <ListGroupItem variant="warning">ühe rea vaade</ListGroupItem>
-                                <ListGroupItem variant="warning">võimalus valida kaalumine</ListGroupItem>
-                                <ListGroupItem variant="warning">võimalus valida klaviatuur</ListGroupItem>
+                                <ListGroupItem variant="success">ühe rea vaade</ListGroupItem>
+                                <ListGroupItem variant="success">võimalus valida kaalumine/klaviatuur</ListGroupItem>
                                 <ListGroupItem variant="warning"></ListGroupItem>
                                 <ListGroupItem variant="warning"></ListGroupItem>
                             </ListGroup>
-
                             <ListGroup>
                                 <ListGroupItem variant="info"><h5>Kaalumine</h5></ListGroupItem>
-                                <ListGroupItem variant="warning">Kaalu vaade</ListGroupItem>
-                                <ListGroupItem variant="warning">nupud - nulli/taara/kaalu</ListGroupItem>
-                                <ListGroupItem variant="warning">nupp - trüki etikett</ListGroupItem>
-                                <ListGroupItem variant="warning">tagasi sisestuseta</ListGroupItem>
+                                <ListGroupItem variant="success">Kaalu vaade</ListGroupItem>
+                                <ListGroupItem variant="success">nupud - kaalu</ListGroupItem>
+                                <ListGroupItem variant="warning">(!) Pidev kaalu näit
+                                <ul>
+                                    <li>näit peab olemas olema kui vaja vs resursi kasutus mõistlikus</li>
+                                    <li>kaal ei tohi olla hõivatud ühe terminali poolt</li>
+                                </ul>
+                                 </ListGroupItem>
+                                <ListGroupItem variant="warning">nupud - nulli/taara/tagasi sisestuseta</ListGroupItem>
+                                <ListGroupItem variant="warning">nupp - trüki etikett -&gt; (võtab kaalu, lisab rea ja (!)kohe trükib) </ListGroupItem>
+                                <ListGroupItem variant="warning">Kaalu valik sh "offline" -&gt; küsime backendist</ListGroupItem>
                             </ListGroup>
                             <ListGroup>
                                 <ListGroupItem variant="info"><h5>Klaviatuur</h5></ListGroupItem>
@@ -136,18 +169,18 @@ function HomePage() {
                                 <ListGroupItem variant="success">lisame logisse</ListGroupItem>
                             </ListGroup>
                             <ListGroup>
-                                <ListGroupItem variant="info"><h5>Kaalumiste sisestuste liidetisaken</h5>Kasutatav nii kaalumise kui ka käsitsi siestamise korral nähtav ka  </ListGroupItem>
-                                <ListGroupItem variant="success">Vaade: kaalumiste logi</ListGroupItem>
+                                <ListGroupItem variant="info"><h5>Kaalumiste logi</h5>Kasutatav nii kaalumise kui ka käsitsi siestamise korral nähtav ka  </ListGroupItem>
+                                <ListGroupItem variant="success">Vaade: kaalumiste Logi</ListGroupItem>
                                 <ListGroupItem variant="success">vaade peab olema vaadeldav, Lähetuse rea(parent), kaalumise , klaviatuuri vaatega samaaegselt</ListGroupItem>
-                                <ListGroupItem variant="warning">nupp: logist ühe elemendi kustutamine</ListGroupItem>
+                                <ListGroupItem variant="success">nupp: logist ühe elemendi kustutamine</ListGroupItem>
                                 <ListGroupItem variant="warning">nupp: logist ühe elemendi etiketi printimine</ListGroupItem>
-                                <ListGroupItem variant="warning">logi on elus kuni lähetuse vaatesse liikumiseni ...? nimekirja..?</ListGroupItem>
-                                <ListGroupItem variant="warning"></ListGroupItem>
+                                <ListGroupItem variant="success">logi on elus kuni lähetuse rea sisestamiseni?</ListGroupItem>
                             </ListGroup>
                             <ListGroup>
                                 <ListGroupItem variant="info" ><h5>Eriketi pritimine</h5></ListGroupItem>
-                                <ListGroupItem variant="Waning">Kujundus: ...eraldi leht,  ...@media</ListGroupItem>
-                                <ListGroupItem variant="Waning">(kaalu)triipkood</ListGroupItem>
+                                <ListGroupItem variant="warning">Kujundus:</ListGroupItem>
+                                <ListGroupItem variant="warning">(kaalu)triipkood</ListGroupItem>
+                                <ListGroupItem variant="warning">(!)kasutajasõbralik printimine </ListGroupItem>
                             </ListGroup>
                         </ListGroupItem>
                     </ListGroup>

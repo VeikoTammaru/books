@@ -5,12 +5,10 @@ import config from "../Data/config.json"
 
 function Scales({WeigthingPR}) {
     const scalesRef = useRef();
-    
 
     const  weightReading = (reading) =>{
         
         const arr = reading.replace(/\s+/g, " ").split(" ");
-        //console.log ("weightReading", arr);
         if(arr.shift()!=="SI") return false;
         let a = arr.shift();
         if(a==="-") {
@@ -21,7 +19,7 @@ function Scales({WeigthingPR}) {
     }
     
     const scalesReading =() =>{
-        //console.log("scalesReading")
+        // console.log("scalesReading")
         // scalesRef.current.value =  weightReading("SI - 0.06 kg");
         fetch(config.scalesUrl)
         .then(res =>res.json())
@@ -37,18 +35,18 @@ function Scales({WeigthingPR}) {
             return arr.slice();
         })
     }
+
     const takeReading = () =>{
         scalesReading();
     }
     
-    //setInterval(() =>  scalesReading(), 1500);
-    
+    //setInterval(() =>  scalesReading(), 1500); // jooksutab kokku mingi ajaga  (...? close connetion )
 
     return (  
         <>
         <span className={style.keyboardBox}>
             <input className={style.scalesInput} ref={scalesRef} readOnly/>
-            <Button onClick={takeReading}>Kaalu</Button>
+            <Button onClick={takeReading}>Kaalu</Button> {/* see peaks olema asendatud pideva kaalu küsimisega */} 
             <Button onClick={saveReading}>Fikseeri</Button>
         </span>
         </>

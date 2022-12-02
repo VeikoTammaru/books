@@ -14,7 +14,7 @@ export function RepearSHVc(data) {
         } else {
             el.line.push(el.rows.row);
         }
-        /* */
+        /* Is rows display/hidden */
         el.isLines= false;
     });
 
